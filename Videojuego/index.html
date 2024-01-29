@@ -91,8 +91,8 @@
 
   <body>
     <header>
-      <div class="game_name">
-        <div class="container centrado">
+      <div class="game_name centrado">
+        <div class="container">
           <h1>Escape the Labyrinth</h1>
         </div>
       </div>
@@ -101,33 +101,52 @@
     <main>
       <section class="board_complete">
         <div class="container">
-			<div class="row">
-				<div class="col-md-7">
-					<div id="labyrinth"></div>
-				</div>
+          <div class="row row-eq-height">
+            <div class="col-md-9 centrado">
+              <div id="labyrinth"></div>
+            </div>
 
-				<div class="col-md-3">
-					<div class="information">
-						<div class="score-time"></div>
-						<div class="controls">
-							<h3>Controls</h3>
+            <div class="col-md-3">
+              <div class="information">
+                <div class="score-time"></div>
+                <div class="controls">
+                  <h3>Controls</h3>
 
-							<div class="controles">
-								<div class="caja_control centrado">
-									<div class="botonera"></div>
-								</div>
+                  <div class="controles">
+                    <div class="caja_control centrado">
+                      <div class="button-wrapper">
+                        <button class="button-30 arriba relative" role="button">
+                          <p class="">W</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
 
-								<div class="caja_control centrado">
-								<div class="botonera"></div>
-								<div class="botonera"></div>
-								<div class="botonera"></div>
-							</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-          
+                    <div class="caja_control centrado">
+                      <div class="button-wrapper">
+                        <button class="button-30 relative" role="button">
+                          <p class="animacion">A</p>
+                          <i class="fa fa-arrow-left animacion" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="button-wrapper">
+                        <button class="button-30 abajo relative" role="button">
+                          <p class="">S</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="button-wrapper">
+                        <button class="button-30 relative" role="button">
+                          <p class="">D</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
