@@ -1,0 +1,106 @@
+/*!
+* Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+* Code licensed under the Apache License v2.0.
+* For details, see http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+/* Toggle Styles */
+
+
+/*
+#menu-lateral {
+padding-left: 0;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+
+}
+*/
+
+#menu-lateral.toggled.toggle-left .sidebar-wrapper.left{left: 50%}
+
+
+.sidebar-wrapper{z-index:999;position:fixed;left:50%;top:0;width:0;height:100%;margin-left:-50%;overflow-y:auto;background:#00587c;-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease;transition:all .5s ease;text-transform:uppercase;max-width:250px}
+.sidebar-wrapper.right{left:auto;margin-left:0;right:0%;margin-right:-50%}
+
+#page-content-wrapper{width:100%;position:absolute;padding:15px}
+#menu-lateral.toggled #page-content-wrapper{position:absolute;margin-right:-50%}
+.sidebar-nav{position:absolute;top:0;width:50%;margin:0;padding:0;list-style:none}
+.sidebar-nav li{text-indent:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:250px;line-height:40px}
+.sidebar-nav li a{display:block;text-decoration:none;font-size:14px;color:#fff;font-weight:300}
+.sidebar-nav li a:hover{text-decoration:none;color:#000;background:#fff}
+.sidebar-nav li a:active,.sidebar-nav li a:focus{text-decoration:none;color:#000}
+.sidebar-nav > .sidebar-brand{height:40px;overflow:hidden;font-size:12px;line-height:40px}
+.sidebar-nav > .sidebar-brand a{color:#ffc7c7}
+.sidebar-nav > .sidebar-brand a:hover{color:#fff;background:none}
+.sidebar-nav li a{-webkit-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px rgba(0,0,0,0);position:relative;-webkit-transition-property:color;transition-property:color;-webkit-transition-duration:.3s;transition-duration:.3s}
+
+@media (max-width: 1200px) {
+
+    #menu-lateral.toggled.toggle-right .sidebar-wrapper.right {display: none;}
+
+}
+
+@media(max-width:992px){
+        #menu-lateral.toggled.toggle-right .sidebar-wrapper.right {width: 30%;right: 50%; display: block;}
+    
+    .navbar-brand{padding:10px;float:none;margin:auto!important}
+    .navbar-toggle-sidebar{float:left;margin-left:15px}
+    .navbar-header{color:#fff}
+    .nav.navbar-nav>li>a{padding-left:20px;font-size:14px}
+    #bs-example-navbar-collapse-1.collapse,#bs-example-navbar-collapse-1.collapsing{position:absolute;background:#00587c;border-top:none;height:100vh!important;max-height:100vh!important;width:250px;right:-50%;padding:10px 20px;-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease;transition:all .5s ease}
+    #bs-example-navbar-collapse-1.collapse.in{right:0}
+    .modal{z-index:500251}
+    #menu-lateral.toggled.toggle-right .sidebar-wrapper.right,#menu-lateral.toggled.toggle-left .sidebar-wrapper.left{width:33%}
+    .left-toggle{position:absolute;left:0}
+    .right-toggle{position:absolute;right:0}
+    .navbar-header{width:100%;position:relative}
+    .navbar-logo{height:100%;width:100%;display:flex;align-items:center center}
+    .sidebar-nav{margin-left:0}
+    .sidebar-wrapper.right{background-image:none;background-color:#30608c;z-index:99;max-width:250px}
+    .sidebar-wrapper{margin-top:52px;max-width:250px;background-color:#30608c;padding-top:10px;    width: 33%;left: 0;}
+    .sidebar-wrapper>div{width:250px}
+    .sidebar-wrapper .menu{padding:0;width:auto}
+    .logo_container{text-align:center}
+    .sidebar-nav{position:relative;width:100%}
+    .sidebar-nav li{text-indent:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:250px;line-height:40px;color:#fff}
+    .sidebar-nav li a img{margin-left:30px}
+    .left .sidebar-nav li a{margin:0;padding:0;text-align:right;padding-right: 25px}
+    .left .sidebar-nav li{}
+    .sidebar-nav li a{color:#fff;font-size:13px;font-family:'Montserrat',sans-serif;text-transform:uppercase;transition:all .2s ease-in-out;font-weight:300;}
+
+    .left .sidebar-nav li.redes_movil a{padding-right: 0px;font-size: 18px}
+    .left .sidebar-nav li.redes_movil a:last-child{padding-right: 25px}
+
+    .cierra-menu a:hover .fa{color:#4f887c}
+    .cierra-menu .fa{padding:20px;font-size:20px;color:#828282}
+    .icono-lateral{height:30px}
+
+    .open>.dropdown-menu.multi-level {display: block;height: auto;width: 100%;position: relative;background-color: transparent;border: none;}
+    
+    .sidebar-wrapper .dropdown-backdrop{z-index: -1}
+    
+    .left .sidebar-nav li .multi-level a:last-child{padding: 10px 40px 10px 0px;}
+    
+
+}
+
+@media (max-width: 767px) {
+    #bs-example-navbar-collapse-1.collapse, #bs-example-navbar-collapse-1.collapsing {width: 70%;}
+    .nav.navbar-nav>li>a {font-size: 13px;
+        padding: 5px 15px; }
+    .sidebar-nav li a {font-size: 13px;
+        padding: 0px 15px; font-weight: 300}
+    #bs-example-navbar-collapse-1.collapse.in {
+        right: 15px;
+    }
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{background-color: #36af3b;}
+    #menu-lateral.toggled.toggle-right .sidebar-wrapper.right, #menu-lateral.toggled.toggle-left .sidebar-wrapper.left {
+        width: 80%;
+    }
+
+    .col-xs-10 {
+        margin-left: 8.3333%;
+    }
+}
