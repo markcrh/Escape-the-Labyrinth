@@ -47,13 +47,16 @@ h1 {
   /* font-family: "Retrolight"; */
   font-family: "NeonLedLight";
   text-align: center;
+  margin: 0;
+  line-height: 45px;
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 36px;
   color: #fff;
   font-family: "NeonLedLight";
   text-align: center;
+  margin-top: 0px;
 }
 
 p {
@@ -83,12 +86,15 @@ header {
 .game_name {
   width: 100%;
   height: 110px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   line-height: 0px;
 }
 
 .game_name .container {
   height: 100%;
+  display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* --- Fin Game Name --- */
@@ -153,7 +159,13 @@ main {
 .exit {
   width: 20px;
   height: 20px;
-  background-color: #1f2937;
+  /* background-color: #1f2937; */
+  /* border: 1px solid red; */
+  background-image: url(images/estrella.png);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  line-height: 0px;
 }
 
 /* .spawn {
@@ -173,7 +185,78 @@ main {
 
 /* --- Information --- */
 .information {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+}
+
+/* --- record-score --- */
+.record-score{
+  background-color: rgba(135, 147, 255, 0.2);
+  padding: 20px 0px;
+  margin-bottom: 30px;
+}
+
+.record-score .centrado{
+  width: 100%;
+}
+
+.trofeo img{
+  height: 40px;
+  margin-right: 5px;
+}
+
+.puntuacion{
+  color: #fff;
+  font-size: 36px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* --- fin record-score --- */
+
+/* --- time-score --- */
+.time-score{
+  background-color: rgba(135, 147, 255, 0.2);
+  padding: 20px 0px;
+  margin-bottom: 30px;
+}
+
+.time-score .centrado{
+  width: 100%;
+  position: relative;
+  left: 15px;
+}
+
+
+.score {
+  /* background-color: #ffffff36; */
+  height: 60px;
+  width: 135px;
+  border-radius: 40px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  position: relative;
+  left: -31px;
+  z-index: -1;
+  border: 1px solid #ffffff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score p{
+  color: #fff;
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+/* --- fin time-score --- */
+
+/* --- controls --- */
+.controls{
+  background-color: rgba(135, 147, 255, 0.2);
+  padding: 20px 0px;
 }
 
 .caja_control {
@@ -185,6 +268,7 @@ main {
   height: 60px;
   background-color: #fff;
 }
+/* --- fin controls --- */
 
 /* --- Fin Information --- */
 
@@ -282,8 +366,11 @@ main {
 - -- - -- - -- - -- - -- - */
 .base-timer {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
+  background-color: #4d4999;
+  border-radius: 50%;
+  /* overflow: hidden; */
 }
 
 .base-timer__svg {
@@ -325,15 +412,15 @@ main {
 
 .base-timer__label {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* - -- - -- - -- - -- - -- 

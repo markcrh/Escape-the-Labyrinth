@@ -5,6 +5,7 @@ import {
   ALERT_THRESHOLD,
   COLOR_CODES,
   TIME_LIMIT,
+  timeLeft,
   startTimer,
   onTimesUp,
   formatTime,
@@ -15,8 +16,6 @@ import {
 
 //Map
 import { map } from "./map.js";
-
-
 
 
 // Muestra el laberinto
@@ -64,24 +63,39 @@ function muestraMapa() {
       //   console.log(row[j]); // ?
     }
     test.push(test2)
-    console.log(test)
+   
   }
 }
 
-console.log(muestraMapa());
+muestraMapa()
+startTimer()
 
-// JUGARDOR
+var bonus = 0
+var bonus2 = setInterval(myBonus(), 1000)
+function myBonus(){
+  ++bonus 
+}
+console.log(bonus2)
+
+
+// JUGADOR
 
 var playerMove = document.getElementsByClassName("player")
 var px = 31
 var py = 1
 playerMove = map[px][py]
+var score = 300
+var finalScore = 0
+//console.log(score)
+//console.log(timeLeft)
 
-window.addEventListener("keydown", function(e){
+const movement = window.addEventListener("keydown", function(e){
     switch(e.key){
         case"w":
         if (map[px-1][py] === 1){
             console.log("wall")
+            score -= 10
+            console.log(score)
         } else if (map[px-1][py] === 0){
             console.log("nos fuimos")
             map[px][py] = 0
@@ -90,11 +104,13 @@ window.addEventListener("keydown", function(e){
             test[px-1][py].setAttribute("class", "player")
             px--
             console.log(map)
-            console.log(playerMove)
+            console.log(playerMove) 
         }break;
         case"a":
         if (map[px][py-1] === 1){
             console.log("wall")
+            score -= 10
+            console.log(score)
         } else if (map[px][py-1] === 0){
             console.log("nos fuimos")
             map[px][py] = 0
@@ -103,10 +119,26 @@ window.addEventListener("keydown", function(e){
             test[px][py-1].setAttribute("class", "player")
             py--
             console.log(map)
-        }break;
+        } else if (map[px][py-1] === 2){
+          console.log("nos fuimos")
+            map[px][py] = 0
+            test[px][py].setAttribute("class", "path")
+            map[px][py-1] = 3
+            test[px][py-1].setAttribute("class", "player")
+            py--
+            onTimesUp()
+            //console.log(timeLeft)
+            $('#myModal').modal('toggle')
+            // window.alert("You Win!")
+            finalScore = score + timeLeft
+            console.log(finalScore)
+            console.log(map)
+        } break;
         case"s":
         if (map[px+1][py] === 1){
             console.log("wall")
+            score -= 10
+            console.log(score)
         } else if (map[px+1][py] === 0){
             console.log("nos fuimos")
             map[px][py] = 0
@@ -119,6 +151,8 @@ window.addEventListener("keydown", function(e){
         case"d":
         if (map[px][py+1] === 1){
             console.log("wall")
+            score -= 10
+            console.log(score)
         } else if (map[px][py+1] === 0){
             console.log("nos fuimos")
             map[px][py] = 0
@@ -127,9 +161,21 @@ window.addEventListener("keydown", function(e){
             test[px][py+1].setAttribute("class", "player")
             py++
             console.log(map)
+        } else if (map[px][py+1] === 2){
+          console.log("nos fuimos")
+          map[px][py] = 0
+          test[px][py].setAttribute("class", "path")
+          map[px][py+1] = 3
+          test[px][py+1].setAttribute("class", "player")
+          py++
+          onTimesUp()
+          //console.log(timeLeft)
+
+          window.alert("You Win!")
+          console.log(map)
+          console.log(score)
+          console.log(timePassed)
+
         }break;
     }
 })
-
-console.log(playerMove)
- 

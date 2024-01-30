@@ -29,9 +29,12 @@
     <!-- estilo css -->
     <link rel="stylesheet" href="style.css" />
 
-      <!-- favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-     
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="images/laberinto2.png"
+      type="image/x-icon"
+    />
 
     <!-- - - FUENTES - - -->
 
@@ -43,9 +46,47 @@
   </head>
 
   <body>
-    <header>
-      <img src="images/favicon1.png" alt="">
-      <div class="game_name centrado">
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal sonido_web fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">¿Quieres activar el sonido?</h4>
+                  <!--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+              </div>
+
+              <div class="modal-body">
+                  <audio id="musica1" autoplay>
+                      <source src="audio/Portada.mp3" type="audio/mpeg">
+                  </audio>
+
+                   <button onclick="PlayAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Reproducir</button>
+                  <button onclick="PauseAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Pausar</button>
+                  <!--
+<button type="button" id="playBtn" class="btn close btn-info" data-dismiss="modal">Si</button>
+
+<button type="button" id="pauseBtn" class="btn close btn-info" data-dismiss="modal">No</button>
+-->
+              </div>
+
+              <div class="modal-footer">Activa y desactiva el sonido en el botón lateral de sonido <i class="fa fa-volume-up" aria-hidden="true"></i></div>
+          </div>
+      </div>
+  </div>
+
+  <!-- <div class="red  animacion_2">
+    <a href="#myModal" class="trigger-btn" data-toggle="modal">
+        <span>Sonido</span>
+        <div class="imagen_red centrado">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+        </div>
+    </a>
+</div> -->
+
+
+    <header class="caja">
+      <div class="game_name centrado wow fadeInUp" data-wow-duration="1.2s" data-wow-delay="0s">
         <div class="container">
           <h1>Escape the Labyrinth</h1>
         </div>
@@ -59,12 +100,27 @@
               <div id="labyrinth"></div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 centrado">
               <div class="information">
-                <div class="score-time">
-                  <h3>Score</h3>
-                  <div class="temporizador">
-                    <div id="app"></div>
+                <div class="record-score">
+                  <h3>Hi Score</h3>
+                  <div class="centrado">
+                    <div class="trofeo">
+                      <img src="images/trofeo.png" alt="" />
+                    </div>
+                    <div class="puntuacion">1250</div>
+                  </div>
+                </div>
+
+                <div class="time-score">
+                  <h3>Time Score</h3>
+                  <div class="centrado">
+                      <div class="temporizador">
+                        <div id="app"></div>
+                      </div>
+                      <div class="score">
+                        <p id="puntuacion">---</p>
+                      </div>
                   </div>
                 </div>
 
@@ -80,7 +136,7 @@
                         </button>
                       </div>
                     </div>
-
+                    
                     <div class="caja_control centrado">
                       <div class="button-wrapper">
                         <button class="button-30 relative" role="button">
@@ -111,9 +167,6 @@
     </main>
 
     <footer></footer>
-
-
-    
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/splide.min.js"></script>
@@ -133,5 +186,22 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+      //modal 
+      var audio = document.getElementById("musica1");
+
+function PlayAudio() {
+    audio.play();
+    console.log('Audio reproduciéndose.');
+}
+
+function PauseAudio() {
+    audio.pause();
+    console.log('Audio pausado.');
+}
+//fin modal 
+$( document ).ready(function() {
+    $('#myModal').modal('toggle')
+});
   </script>
 </html>
