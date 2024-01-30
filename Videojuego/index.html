@@ -108,7 +108,13 @@
 
             <div class="col-md-3">
               <div class="information">
-                <div class="score-time"></div>
+                <div class="score-time">
+                  <h3>Score</h3>
+                  <div class="temporizador">
+                    <div id="app"></div>
+                  </div>
+                </div>
+
                 <div class="controls">
                   <h3>Controls</h3>
 
@@ -125,8 +131,8 @@
                     <div class="caja_control centrado">
                       <div class="button-wrapper">
                         <button class="button-30 relative" role="button">
-                          <p class="animacion">A</p>
-                          <i class="fa fa-arrow-left animacion" aria-hidden="true"></i>
+                          <p class="">A</p>
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
                         </button>
                       </div>
                       <div class="button-wrapper">
@@ -232,7 +238,9 @@
   <script src="js/jquery.animateSlider.js"></script>
   <!-- slider banner consola -->
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/mis-scripts.js"></script>
+  <script defer src="js/mis-scripts.js" type="module"></script>
+  <script defer src="js/timer.js" type="module"></script>
+  <script defer src="js/map.js" type="module"></script>
   <!-- mis scripts -->
   <script src="js/wow.min.js"></script>
   <script>

@@ -163,11 +163,11 @@ main {
   margin: 5px;
 } */
 
-.player{
-    width: 10px;
-    height: 10px;
-    background-color: #38e0d5;
-    margin: 5px;
+.player {
+  width: 10px;
+  height: 10px;
+  background-color: #38e0d5;
+  margin: 5px;
 }
 /*  --- Fin Labyrinth --- */
 
@@ -276,6 +276,66 @@ main {
 .button-30:hover .fa {
   opacity: 1;
 }
+
+/* - -- - -- - -- - -- - -- 
+-- - Estilo temporizador - --
+- -- - -- - -- - -- - -- - */
+.base-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+  color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+/* - -- - -- - -- - -- - -- 
+-- - Fin Estilo temporizador - --
+- -- - -- - -- - -- - -- - */
 
 /* - -- - -- - -- - -- - -- 
 -- - Estilo botones - --
