@@ -194,7 +194,7 @@ body {
 
 .elemento3 {
     top: 188px;
-    right: 48px;key
+    right: 48px;
     height: 18px;
 }
 
@@ -299,7 +299,6 @@ body {
     background-size: contain;
     background-position: center center;
 
-
 }
 
 .padre_portada {
@@ -402,6 +401,7 @@ main.interior {
 }
 
 /* -- row -- */
+
 .row-eq-height {
     display: -webkit-box;
     display: -webkit-flex;
