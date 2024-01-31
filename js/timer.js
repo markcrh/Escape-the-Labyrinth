@@ -18,7 +18,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 100;
+const TIME_LIMIT = 90;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 
@@ -50,13 +50,11 @@ document.getElementById("app").innerHTML = `
 `;
 
 function onTimesUp() {
-  console.log(timerInterval)
-  clearInterval(timerInterval);
+  clearInterval(timerInterval)
 }
 
 function startTimer() {
   timerInterval = setInterval(() => {
-    console.log(timeLeft)
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
@@ -68,6 +66,7 @@ function startTimer() {
 
     if (timeLeft === 0) {
       onTimesUp();
+      
     }
   }, 1000);
 }
