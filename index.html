@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,user-scalable=no"
+    />
+    <title>Escape the Labyrinth</title>
+    <!-- estilo bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- no inventa teléfonos sin permiso -  iOS -->
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- iconos awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- WOW Animate -->
+    <link rel="stylesheet" href="css/animate.css" />
+
+    <!-- splide -->
+    <link rel="stylesheet" href="css/splide.min.css" />
+
+    <!-- estilo css -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="images/laberinto2.png"
+      type="image/x-icon"
+    />
+
+    <!-- - - FUENTES - - -->
+
+    <!--  font-family: 'Open Sans', sans-serif; -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal sonido_web fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">¿Quieres activar el sonido?</h4>
+                  <!--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+              </div>
+
+              <div class="modal-body">
+                  <audio id="musica1" autoplay>
+                      <source src="audio/Portada.mp3" type="audio/mpeg">
+                  </audio>
+
+                   <button onclick="PlayAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Reproducir</button>
+                  <button onclick="PauseAudio()" data-dismiss="modal" class="hvr-shutter-out-horizontal">Pausar</button>
+                  <!--
+<button type="button" id="playBtn" class="btn close btn-info" data-dismiss="modal">Si</button>
+
+<button type="button" id="pauseBtn" class="btn close btn-info" data-dismiss="modal">No</button>
+-->
+              </div>
+
+              <div class="modal-footer">Activa y desactiva el sonido en el botón lateral de sonido <i class="fa fa-volume-up" aria-hidden="true"></i></div>
+          </div>
+      </div>
+  </div>
+
+  <!-- <div class="red  animacion_2">
+    <a href="#myModal" class="trigger-btn" data-toggle="modal">
+        <span>Sonido</span>
+        <div class="imagen_red centrado">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+        </div>
+    </a>
+</div> -->
+
+
+    <header class="caja">
+      <div class="game_name centrado wow fadeInUp" data-wow-duration="1.2s" data-wow-delay="0s">
+        <div class="container">
+          <h1>Escape the Labyrinth</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="board_complete">
+        <div class="container">
+          <div class="row row-eq-height">
+            <div class="col-md-9 centrado">
+              <div id="labyrinth"></div>
+            </div>
+
+            <div class="col-md-3 centrado">
+              <div class="information">
+                <div class="record-score">
+                  <h3>Hi Score</h3>
+                  <div class="centrado">
+                    <div class="trofeo">
+                      <img src="images/trofeo.png" alt="" />
+                    </div>
+                    <div class="puntuacion"> - - - </div>
+                  </div>
+                </div>
+
+                <div class="time-score">
+                  <h3>Time Score</h3>
+                  <div class="centrado">
+                      <div class="temporizador">
+                        <div id="app"></div>
+                      </div>
+                      <div class="score">
+                        <p id="puntuacion">5000</p>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="controls">
+                  <h3>Controls</h3>
+
+                  <div class="controles">
+                    <div class="caja_control centrado">
+                      <div class="button-wrapper">
+                        <button class="button-30 arriba relative" role="button">
+                          <p class="">W</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                    
+                    <div class="caja_control centrado">
+                      <div class="button-wrapper">
+                        <button class="button-30 relative" role="button">
+                          <p class="">A</p>
+                          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="button-wrapper">
+                        <button class="button-30 abajo relative" role="button">
+                          <p class="">S</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <div class="button-wrapper">
+                        <button class="button-30 relative" role="button">
+                          <p class="">D</p>
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/splide.min.js"></script>
+  <!-- splide -->
+  <script src="js/jquery.animateSlider.js"></script>
+  <!-- slider banner consola -->
+  <script src="js/bootstrap.min.js"></script>
+  <script defer src="js/mis-scripts.js" type="module"></script>
+  <script defer src="js/timer.js" type="module"></script>
+  <script defer src="js/map.js" type="module"></script>
+  <!-- mis scripts -->
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+
+    $(".menu-toggle-sidebar").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+      //modal 
+      var audio = document.getElementById("musica1");
+
+function PlayAudio() {
+    audio.play();
+    console.log('Audio reproduciéndose.');
+}
+
+function PauseAudio() {
+    audio.pause();
+    console.log('Audio pausado.');
+}
+//fin modal 
+$( document ).ready(function() {
+    $('#myModal').modal('toggle')
+});
+  </script>
+</html>
