@@ -2,7 +2,9 @@
 import {
   timeLeft,
   startTimer,
-  onTimesUp
+  onTimesUp,
+  TIME_LIMIT,
+  checkTime
 } from './timer.js';
 startTimer()
 
@@ -56,6 +58,20 @@ function muestraMapa() {
         arrayBox.appendChild(player);
         subArrayDiv.push(player)
       }
+
+      else if (map[i][j] === 4) {
+        const key = document.createElement("class");
+        key.setAttribute("class", "key");
+        arrayBox.appendChild(key);
+        subArrayDiv.push(key)
+      }
+
+      else if (map[i][j] === 5) {
+        const door = document.createElement("class");
+        door.setAttribute("class", "door");
+        arrayBox.appendChild(door);
+        subArrayDiv.push(door)
+      }
     } 
     //We push the sub array of divs to the main arrayDiv
     arrayDiv.push(subArrayDiv)
@@ -66,11 +82,11 @@ muestraMapa()
 
 //Score values
 var score = 5000
-var finalScore = 0
-var test = document.querySelector("#puntuacion")
-var scoreDrop = setInterval(()=>{
+var finalScore = document.querySelector(".puntuacion")
+var scoreIndex = document.querySelector("#puntuacion")
+var scoreID = setInterval(()=>{
   score -= 10
-  test.innerText = score
+  scoreIndex.innerText = score
   }, 1000)
 
 //Player
@@ -92,7 +108,7 @@ const movement = window.addEventListener("keydown", function(e){
             
             //We set a penalization when the player collides with a wall
             score -= 10
-            test.innerText = score
+            scoreIndex.innerText = score
 
         } else if (map[px-1][py] === 0){
             //We exchange the value of player's current position (3) to 0 (path) and set its corresponding class.
@@ -108,7 +124,7 @@ const movement = window.addEventListener("keydown", function(e){
         if (map[px][py-1] === 1){
           
             score -= 10
-            test.innerText = score
+            scoreIndex.innerText = score
 
         } else if (map[px][py-1] === 0){
           
@@ -119,7 +135,20 @@ const movement = window.addEventListener("keydown", function(e){
             arrayDiv[px][py-1].setAttribute("class", "player")
             py--
             
-        } else if (map[px][py-1] === 2){
+        } else if (map[px][py-1] === 4){
+          
+          map[px][py] = 0
+          arrayDiv[px][py].setAttribute("class", "path")
+
+          map[px][py-1] = 3
+          arrayDiv[px][py-1].setAttribute("class", "player")
+          py--
+          map[6][41] = 0
+          arrayDiv[6][41].setAttribute("class", "path")
+
+      }
+        
+        else if (map[px][py-1] === 2){
           
             map[px][py] = 0
             arrayDiv[px][py].setAttribute("class", "path")
@@ -128,17 +157,18 @@ const movement = window.addEventListener("keydown", function(e){
             arrayDiv[px][py-1].setAttribute("class", "player")
             py--
             onTimesUp()
+            clearInterval(scoreID)
+            finalScore.innerText = score + timeLeft
             
             $('#myModal').modal('toggle')
-            
-            finalScore = score + timeLeft
+      
         } break;
 
         case"s":
         if (map[px+1][py] === 1){
           
             score -= 10
-            test.innerText = score
+            scoreIndex.innerText = score
             
         } else if (map[px+1][py] === 0){
           
@@ -149,12 +179,18 @@ const movement = window.addEventListener("keydown", function(e){
             arrayDiv[px+1][py].setAttribute("class", "player")
             px++
             
+        } else if (map[px+1][py] === 5){
+          
+          score -= 10
+          scoreIndex.innerText = score
+
         }break;
+
         case"d":
         if (map[px][py+1] === 1){
           
             score -= 10
-            test.innerText = score
+            scoreIndex.innerText = score
             
         } else if (map[px][py+1] === 0){
           
@@ -174,14 +210,10 @@ const movement = window.addEventListener("keydown", function(e){
           arrayDiv[px][py+1].setAttribute("class", "player")
           py++
           onTimesUp()
-          finalScore = score + timeLeft
+          clearInterval(scoreID)
+          finalScore.innerText = score
           window.alert("You Win!")
 
         }break;
     }
 })
-
-
-
-
-console.log(test.innerHTML)
