@@ -56,7 +56,7 @@ function onTimesUp() {
 
 function startTimer() {
   timerInterval = setInterval(() => {
-    console.log(timeLeft)
+    //console.log(timeLeft)
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(

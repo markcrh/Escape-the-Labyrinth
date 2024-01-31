@@ -64,16 +64,21 @@ function muestraMapa() {
 //We now call the function
 muestraMapa()
 
+//Score values
+var score = 5000
+var finalScore = 0
+var test = document.querySelector("#puntuacion")
+var scoreDrop = setInterval(()=>{
+  score -= 10
+  test.innerText = score
+  }, 1000)
+
 //Player
 var playerMove = document.getElementsByClassName("player")
 
 //We set the coordinates for the player to spawn in the array
 var px = 31
 var py = 1
-
-//Score values
-var score = 300
-var finalScore = 0
 
 //Player's movement
 //We configure the player's position to equal X given coordinates
@@ -87,6 +92,7 @@ const movement = window.addEventListener("keydown", function(e){
             
             //We set a penalization when the player collides with a wall
             score -= 10
+            test.innerText = score
 
         } else if (map[px-1][py] === 0){
             //We exchange the value of player's current position (3) to 0 (path) and set its corresponding class.
@@ -100,74 +106,82 @@ const movement = window.addEventListener("keydown", function(e){
 
         case"a":
         if (map[px][py-1] === 1){
-            console.log("wall")
+          
             score -= 10
-            console.log(score)
+            test.innerText = score
+
         } else if (map[px][py-1] === 0){
-            console.log("nos fuimos")
+          
             map[px][py] = 0
             arrayDiv[px][py].setAttribute("class", "path")
+
             map[px][py-1] = 3
             arrayDiv[px][py-1].setAttribute("class", "player")
             py--
-            console.log(map)
+            
         } else if (map[px][py-1] === 2){
-          console.log("nos fuimos")
+          
             map[px][py] = 0
             arrayDiv[px][py].setAttribute("class", "path")
+
             map[px][py-1] = 3
             arrayDiv[px][py-1].setAttribute("class", "player")
             py--
             onTimesUp()
-            //console.log(timeLeft)
+            
             $('#myModal').modal('toggle')
-            // window.alert("You Win!")
+            
             finalScore = score + timeLeft
-            console.log(finalScore)
-            console.log(map)
         } break;
+
         case"s":
         if (map[px+1][py] === 1){
-            console.log("wall")
+          
             score -= 10
-            console.log(score)
+            test.innerText = score
+            
         } else if (map[px+1][py] === 0){
-            console.log("nos fuimos")
+          
             map[px][py] = 0
             arrayDiv[px][py].setAttribute("class", "path")
+
             map[px+1][py] = 3
             arrayDiv[px+1][py].setAttribute("class", "player")
             px++
-            console.log(map)
+            
         }break;
         case"d":
         if (map[px][py+1] === 1){
-            console.log("wall")
+          
             score -= 10
-            console.log(score)
+            test.innerText = score
+            
         } else if (map[px][py+1] === 0){
-            console.log("nos fuimos")
+          
             map[px][py] = 0
             arrayDiv[px][py].setAttribute("class", "path")
+
             map[px][py+1] = 3
             arrayDiv[px][py+1].setAttribute("class", "player")
             py++
-            console.log(map)
+            
         } else if (map[px][py+1] === 2){
-          console.log("nos fuimos")
+          
           map[px][py] = 0
           arrayDiv[px][py].setAttribute("class", "path")
+
           map[px][py+1] = 3
           arrayDiv[px][py+1].setAttribute("class", "player")
           py++
           onTimesUp()
-          //console.log(timeLeft)
-
+          finalScore = score + timeLeft
           window.alert("You Win!")
-          console.log(map)
-          console.log(score)
-          console.log(timePassed)
 
         }break;
     }
 })
+
+
+
+
+console.log(test.innerHTML)
