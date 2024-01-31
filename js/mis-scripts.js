@@ -3,8 +3,7 @@ import {
   timeLeft,
   startTimer,
   onTimesUp,
-  TIME_LIMIT,
-  checkTime
+  TIME_LIMIT
 } from './timer.js';
 startTimer()
 
@@ -87,6 +86,9 @@ var scoreIndex = document.querySelector("#puntuacion")
 var scoreID = setInterval(()=>{
   score -= 10
   scoreIndex.innerText = score
+  if (timeLeft === 1){
+    clearInterval(scoreID)
+  }
   }, 1000)
 
 //Player
@@ -95,6 +97,12 @@ var playerMove = document.getElementsByClassName("player")
 //We set the coordinates for the player to spawn in the array
 var px = 31
 var py = 1
+
+const openBtn = document.getElementById("openModal")
+const closeBtn = document.getElementById("closeModal")
+const modal = document.getElementById("modal")
+
+//WASD
 
 //Player's movement
 //We configure the player's position to equal X given coordinates
@@ -145,24 +153,7 @@ const movement = window.addEventListener("keydown", function(e){
           py--
           map[6][41] = 0
           arrayDiv[6][41].setAttribute("class", "path")
-
-      }
-        
-        else if (map[px][py-1] === 2){
-          
-            map[px][py] = 0
-            arrayDiv[px][py].setAttribute("class", "path")
-
-            map[px][py-1] = 3
-            arrayDiv[px][py-1].setAttribute("class", "player")
-            py--
-            onTimesUp()
-            clearInterval(scoreID)
-            finalScore.innerText = score + timeLeft
-            
-            $('#myModal').modal('toggle')
-      
-        } break;
+      }break;
 
         case"s":
         if (map[px+1][py] === 1){
@@ -183,7 +174,6 @@ const movement = window.addEventListener("keydown", function(e){
           
           score -= 10
           scoreIndex.innerText = score
-
         }break;
 
         case"d":
@@ -211,9 +201,20 @@ const movement = window.addEventListener("keydown", function(e){
           py++
           onTimesUp()
           clearInterval(scoreID)
-          finalScore.innerText = score
-          window.alert("You Win!")
+          finalScore.innerText = score + (timeLeft*10)
+          
+         
+          
+          
+            modal.classList.add("open")
+          
+          closeBtn.addEventListener("click", () => {
+            modal.classList.remove("open")
+          })
 
         }break;
     }
 })
+
+// ---------------------------------------------------------------------
+

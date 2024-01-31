@@ -370,7 +370,7 @@ main {
 
 .button-30 .fa {
   position: absolute;
-  color: #1f2937;
+  color: #fff;
   opacity: 0;
   transition: all 200ms linear;
   -webkit-transition: all 200ms linear;
@@ -379,13 +379,28 @@ main {
   -o-transition: all 200ms linear;
 }
 
-.button-30:hover p {
+/* .button-30:hover p {
   opacity: 0;
 }
 
 .button-30:hover .fa {
   opacity: 1;
+} */
+
+/* efecto pulsa tecla */
+.button-30.flecha{
+background-color: #0296d1;
+box-shadow: none;
 }
+
+.button-30.flecha p{
+  opacity: 0;
+  }
+
+  .button-30.flecha .fa {
+    opacity: 1;
+  }
+  
 
 /* - -- - -- - -- - -- - -- 
 -- - Estilo temporizador - --
@@ -931,3 +946,26 @@ color: #004a9d;
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- --  -- -- -- -- -- -- -- Responsive  -- -- -- -- -- -- -- -- -- -- -- -- 
 -- --  -- -- -- -- -- -- -- -- -- -- --  -- -- -- -- -- -- -- -- -- -- --*/
+
+
+.modal {
+  background-color: rgba(25, 52, 127, 0.702);
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open{
+  opacity: 1;
+  z-index: 999;
+}

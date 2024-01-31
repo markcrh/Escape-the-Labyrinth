@@ -18,7 +18,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 10;
+const TIME_LIMIT = 90;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 
@@ -115,12 +115,6 @@ function setCircleDasharray() {
     .setAttribute("stroke-dasharray", circleDasharray);
 }
 
-function checkTime(){
-  if (onTimesUp = true){
-    return "continue"
-  }
-}
-
 export {
   FULL_DASH_ARRAY,
   WARNING_THRESHOLD,
@@ -133,6 +127,5 @@ export {
   formatTime,
   setRemainingPathColor,
   calculateTimeFraction,
-  setCircleDasharray,
-  checkTime
+  setCircleDasharray
 };
