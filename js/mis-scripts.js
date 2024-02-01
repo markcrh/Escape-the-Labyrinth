@@ -58,6 +58,7 @@ function muestraMapa() {
         subArrayDiv.push(player)
       }
 
+      //Indexs' with value "4" will be assigned a div class "key", which the player will need to open the door
       else if (map[i][j] === 4) {
         const key = document.createElement("class");
         key.setAttribute("class", "key");
@@ -65,6 +66,7 @@ function muestraMapa() {
         subArrayDiv.push(key)
       }
 
+      //Indexs' with value "5" will be assigned a div class "door" that will block the way to the exit
       else if (map[i][j] === 5) {
         const door = document.createElement("class");
         door.setAttribute("class", "door");
@@ -79,6 +81,27 @@ function muestraMapa() {
 //We now call the function
 muestraMapa()
 
+//Music
+//Credits to @Pixverses on YouTube
+var ost = new Audio("./music/Run As Fast As You Can.mp3")
+ost.loop = true
+ost.play()
+//Picked from pixaby.com
+var gameStart = new Audio("./music/Game Start.mp3")
+gameStart.play()
+var keySound = new Audio("./music/Key Pick Up.mp3")
+var thump = new Audio("./music/Collision.mp3")
+var win = new Audio ("./music/Win.mp3")
+var gameOverSound = new Audio ("./music/Game Over.mp3")
+
+//GAME OVER
+ function gameover(){
+  if (timeLeft === 0){
+    console.log("GAME OVER")
+    gameOverSound.play()
+  }
+}
+
 //Score values
 var score = 5000
 var finalScore = document.querySelector(".puntuacion")
@@ -86,10 +109,15 @@ var scoreIndex = document.querySelector("#puntuacion")
 var scoreID = setInterval(()=>{
   score -= 10
   scoreIndex.innerText = score
-  if (timeLeft === 1){
+  if (timeLeft === 0){
     clearInterval(scoreID)
+    ost.pause()
+    gameover()
   }
   }, 1000)
+
+ 
+ 
 
 //Player
 var playerMove = document.getElementsByClassName("player")
@@ -97,12 +125,6 @@ var playerMove = document.getElementsByClassName("player")
 //We set the coordinates for the player to spawn in the array
 var px = 31
 var py = 1
-
-const openBtn = document.getElementById("openModal")
-const closeBtn = document.getElementById("closeModal")
-const modal = document.getElementById("modal")
-
-//WASD
 
 //Player's movement
 //We configure the player's position to equal X given coordinates
@@ -117,6 +139,7 @@ const movement = window.addEventListener("keydown", function(e){
             //We set a penalization when the player collides with a wall
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
 
         } else if (map[px-1][py] === 0){
             //We exchange the value of player's current position (3) to 0 (path) and set its corresponding class.
@@ -133,6 +156,7 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
 
         } else if (map[px][py-1] === 0){
           
@@ -151,6 +175,8 @@ const movement = window.addEventListener("keydown", function(e){
           map[px][py-1] = 3
           arrayDiv[px][py-1].setAttribute("class", "player")
           py--
+          keySound.play()
+
           map[6][41] = 0
           arrayDiv[6][41].setAttribute("class", "path")
       }break;
@@ -160,6 +186,7 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
             
         } else if (map[px+1][py] === 0){
           
@@ -181,6 +208,7 @@ const movement = window.addEventListener("keydown", function(e){
           
             score -= 10
             scoreIndex.innerText = score
+            thump.play()
             
         } else if (map[px][py+1] === 0){
           
@@ -201,20 +229,21 @@ const movement = window.addEventListener("keydown", function(e){
           py++
           onTimesUp()
           clearInterval(scoreID)
+          ost.pause()
+          win.play()
+
           finalScore.innerText = score + (timeLeft*10)
-          
-         
-          
-          
-            modal.classList.add("open")
+
+          modal.classList.add("open")
           
           closeBtn.addEventListener("click", () => {
-            modal.classList.remove("open")
+          modal.classList.remove("open")
           })
 
         }break;
     }
 })
 
-// ---------------------------------------------------------------------
-
+const openBtn = document.getElementById("openModal")
+const closeBtn = document.getElementById("closeModal")
+const modal = document.getElementById("modal")
